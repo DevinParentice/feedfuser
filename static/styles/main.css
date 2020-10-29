@@ -24,7 +24,7 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
+a:not(.hvr-underline-reveal):hover {
 	color: lightgrey;
 }
 
@@ -172,4 +172,38 @@ a:hover {
 	.menu li.button {
 		padding-right: 0;
 	}
+
+	.hvr-underline-reveal {
+		display: inline-block;
+		vertical-align: middle;
+		-webkit-transform: perspective(1px) translateZ(0);
+		transform: perspective(1px) translateZ(0);
+		box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+		position: relative;
+		overflow: hidden;
+	  }
+	  .hvr-underline-reveal:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgb(59,89,152);
+		background: linear-gradient(90deg, rgba(59,89,152,1) 0%, rgba(29,161,242,1) 44%, rgba(225,48,108,1) 100%);
+		height: 4px;
+		-webkit-transform: translateY(4px);
+		transform: translateY(4px);
+		-webkit-transition-property: transform;
+		transition-property: transform;
+		-webkit-transition-duration: 0.1s;
+		transition-duration: 0.1s;
+		-webkit-transition-timing-function: ease-out;
+		transition-timing-function: ease-out;
+		border-radius: 10px;
+	  }
+	  .hvr-underline-reveal:hover:before, .hvr-underline-reveal:focus:before, .hvr-underline-reveal:active:before {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	  }
 }
