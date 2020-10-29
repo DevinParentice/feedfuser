@@ -173,7 +173,7 @@ form .btn .inner{
   position: absolute;
   left: -100%;
   z-index: -1;
-  background: -webkit-linear-gradient(right,  rgb(92, 115, 129),  rgba(225,48,108,1),  rgba(59,89,152,1),rgba(225,48,108,1));
+  background: -webkit-linear-gradient(right,  rgba(59,89,152,1),  rgba(225,48,108,1),  rgba(59,89,152,1),rgba(225,48,108,1));
   transition: all 0.4s;
 }
 form .btn:hover .inner{
