@@ -15,10 +15,20 @@ $(document).ready(function () {
 
 	// When the user clicks on the button, open the modal
 	loginBtn.onclick = function () {
-		loginModal.style.display = "block";
+		if (loginModal.style.display === "block") {
+			loginModal.style.display = "none";
+		} else {
+			signupModal.style.display = "none";
+			loginModal.style.display = "block";
+		}
 	}
 	signupBtn.onclick = function () {
-		signupModal.style.display = "block";
+		if (signupModal.style.display === "block") {
+			signupModal.style.display = "none";
+		} else {
+			loginModal.style.display = "none";
+			signupModal.style.display = "block";
+		}
 	}
 
 	showSignup.onclick = function () {
