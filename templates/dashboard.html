@@ -11,7 +11,13 @@
 		<div class="header">
 			<div class="main">
 				<div class="image">
-					<img src="{{ image_file }}" alt="Profile Picture" class="profile-pic">
+					<label for="file-input">
+						<img src="{{ image_file }}" alt="Profile Picture" class="profile-pic">
+						<div class="hover">
+							<i class="fas fa-camera fa-2x"></i>
+						</div>
+					</label>
+					<input id="file-input" type="file">
 				</div>
 				<h3 class="name">{{ session['user'].username }}</h3>
 				<h3 class="sub-name">@{{ session['user'].username }}</h3>
