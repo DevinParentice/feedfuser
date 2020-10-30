@@ -54,39 +54,12 @@ body{
     align-items: center;
 }
 
-.main .image {
-    position: relative;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    background: url('../images/profile.png') no-repeat center / cover;
-    border: 4px solid #fff;
-    margin-bottom: 2px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.image .hover {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(79, 172, 254, .7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    transition: .5s;
-    opacity: 0;
-}
-
-.image:hover .hover {
-    opacity: 1;
-}
-
-.hover.active {
-    opacity: 1;
+.profile-pic {
+	position: relative;
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	border: 4px solid #fff;
 }
 
 .name {

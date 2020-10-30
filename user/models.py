@@ -26,6 +26,7 @@ class User:
 				"username": request.form.get('username'),
 				"email": request.form.get('email'),
 				"password": password,
+				"profile_pic": 'profile.png',
 			}
             
             user['password'] = pbkdf2_sha256.encrypt(user['password'])

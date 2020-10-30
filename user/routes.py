@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint, session, redirect
+from flask import Flask, render_template, Blueprint, session, redirect, url_for
 from functools import wraps
 from user.models import User
 
@@ -24,4 +24,5 @@ def signout():
 @user.route('/dashboard/')
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    image_file = url_for('static', filename='images/' + session['user'].get('profile_pic'))
+    return render_template('dashboard.html', image_file=image_file)
