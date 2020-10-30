@@ -19,7 +19,7 @@ ul {
 	list-style-type: none;
 }
 
-span, a {
+span, .nav-item a, .nav-logo a {
 	color: #1c1c1c;
 	text-decoration: none;
 }
@@ -171,7 +171,7 @@ form .btn .inner{
   position: absolute;
   left: -100%;
   z-index: -1;
-  background: -webkit-linear-gradient(right,  rgba(59,89,152,1),  rgba(225,48,108,1),  rgba(59,89,152,1),rgba(225,48,108,1));
+  background: -webkit-linear-gradient(right,  rgba(29,161,242,1),  rgba(225,48,108,1),  rgba(29,161,242,1),rgba(225,48,108,1));
   transition: all 0.4s;
 }
 form .btn:hover .inner{
