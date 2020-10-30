@@ -255,7 +255,12 @@ form .signup-link a:hover{
 		cursor: pointer;
 	}
 
-	.button span:hover {
+	.button:not(.secondary) span:hover {
+		transition: all .1s;
+		border: 2px solid #0079D3;
+	}
+
+	.button.secondary span:hover {
 		transition: all .25s;
 		background: #7fbce9;
 		border-color: #7fbce9;

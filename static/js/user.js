@@ -61,7 +61,7 @@ $(document).ready(function () {
 			data: data,
 			dataType: "json",
 			success: function (resp) {
-				console.log(resp);
+				window.location.href = "/dashboard"
 			},
 			error: function (resp) {
 				$error.text(resp.responseJSON.error).removeClass("error-hidden");
