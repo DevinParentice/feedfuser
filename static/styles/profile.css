@@ -15,7 +15,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
 .card {
@@ -55,6 +54,10 @@ body{
 }
 
 .image>input {
+	display: none;
+}
+
+#file-input, .error-hidden  {
 	display: none;
 }
 
@@ -177,8 +180,7 @@ body{
     font-size: 1.5rem;
     letter-spacing: 1px;
     border-radius: 10px;
-	margin-right: 10px;
-	margin-top: 10px;
+	margin: 10px 10px 0px 10px;
 }
 
 .fb {

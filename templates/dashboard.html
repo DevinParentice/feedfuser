@@ -2,7 +2,9 @@
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/profile.css') }}">
+<script type=text/javascript src="{{ url_for('static', filename='js/profile.js') }}"></script>
 <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<script src="https://code.jquery.com/jquery.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -11,13 +13,16 @@
 		<div class="header">
 			<div class="main">
 				<div class="image">
-					<label for="file-input">
-						<img src="{{ image_file }}" alt="Profile Picture" class="profile-pic">
-						<div class="hover">
-							<i class="fas fa-camera fa-2x"></i>
-						</div>
-					</label>
-					<input id="file-input" type="file">
+					<form name="image-form" id="image-form" enctype="multipart/form-data">
+						<label for="file-input">
+							<img src="{{ image_file }}" alt="Profile Picture" class="profile-pic">
+							<div class="hover">
+								<i class="fas fa-camera fa-2x"></i>
+							</div>
+						</label>
+						<input id="file-input" type="file" name="pic" required>
+						<p class="error error-hidden"></p>
+					</form>
 				</div>
 				<h3 class="name">{{ session['user'].username }}</h3>
 				<h3 class="sub-name">@{{ session['user'].username }}</h3>

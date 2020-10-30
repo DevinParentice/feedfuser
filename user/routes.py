@@ -1,8 +1,12 @@
-from flask import Flask, render_template, Blueprint, session, redirect, url_for
+from PIL.Image import new
+from flask import render_template, Blueprint, session, redirect, url_for, request
 from functools import wraps
-from user.models import User
+from user.utils import save_picture
+from user.models import User, db
+from bson.objectid import ObjectId
 
 user = Blueprint('user', __name__)
+
 
 def login_required(f):
     @wraps(f)
@@ -13,16 +17,31 @@ def login_required(f):
             return redirect('/')
     return wrap
 
+
 @user.route('/user/signup', methods=['POST'])
 def signup():
     return User().signup()
+
 
 @user.route('/user/signout/')
 def signout():
     return User().signout()
 
-@user.route('/dashboard/')
+
+@user.route('/dashboard/', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    image_file = url_for('static', filename='images/' + session['user'].get('profile_pic'))
-    return render_template('dashboard.html', image_file=image_file)
+    if request.method == 'POST':
+        picture = request.files.get('profile-pic')
+        newPic = save_picture(picture)
+        db.users.update_one(
+            {'_id': session['user'].get('_id')},
+            {'$set': {"profile_pic": newPic}}
+        )
+        return redirect(url_for('user.dashboard'))
+    else:
+        currentUser = db.users.find_one(
+            {'username': session['user']['username']})
+        image_file = url_for('static', filename='images/' +
+                             currentUser['profile_pic'])
+        return render_template('dashboard.html', image_file=image_file)
