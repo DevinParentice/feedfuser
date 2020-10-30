@@ -4,28 +4,29 @@
 		<div class="text">
 			Sign Up Form
 		</div>
-		<form action="#">
+		<form name="signup-form">
 			<div class="data">
 				<label>Username</label>
-				<input type="text" required>
+				<input type="text" name="username" required>
 			</div>
 			<div class="data">
 				<label>Email</label>
-				<input type="text" required>
+				<input type="email" name="email" required>
 			</div>
 			<div class="data">
 				<label>Password</label>
-				<input type="password" required>
+				<input type="password" name="password" required>
 			</div>
 			<div class="data">
 				<label>Confirm Password</label>
-				<input type="password" required>
+				<input type="password" name="password-confirm" required>
 			</div>
 			<div class="btn">
 				<div class="inner">
 				</div>
 				<button type="submit">Sign Up</button>
 			</div>
+			<p class="error error-hidden"></p>
 			<div class="signup-link">
 				Already a member? <span id="showLogin">Log in now</span>
 			</div>

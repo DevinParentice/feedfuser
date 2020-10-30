@@ -205,6 +205,12 @@ form .signup-link a:hover{
 	color: #0079D3;
 }
 
+.error {
+	color: red;
+	padding-bottom: 15px;
+	text-align: center;
+}
+
 /* Tablet Menu */
 @media all and (min-width:468px) {
 	.menu {
