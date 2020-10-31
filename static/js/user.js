@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	if (top.location.pathname === '/' || top.location.pathname === '/home') {
+	if (top.location.pathname === '/' || top.location.pathname.includes('/home')) {
 		var loginModal = document.getElementById("loginContainer");
 		var signupModal = document.getElementById("signupContainer");
 

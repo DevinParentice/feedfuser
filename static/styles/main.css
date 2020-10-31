@@ -29,7 +29,7 @@ span:not(.hvr-underline-reveal):hover {
 }
 
 .menu li {
-	font-size: 16px;
+	font-size: 20px;
 	padding: 15px 5px;
 }
 
@@ -41,6 +41,20 @@ span:not(.hvr-underline-reveal):hover {
 	font-size: 40px;
 	font-weight: 1000;
 	width: fit-content;
+}
+
+.nav-pic {
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+.user-button span {
+	width: 200px;
+	font-size: 24px;
+	align-items: center;
+	text-align: center;
 }
 
 .button.secondary {
@@ -64,6 +78,7 @@ span:not(.hvr-underline-reveal):hover {
 	text-align: center;
 	order: 3;
 	display: none;
+	min-width: 0;
 }
 
 .nav-item.active {
@@ -244,7 +259,7 @@ form .signup-link a:hover{
 	.menu {
 		justify-content: center;
 	}
-
+	
 	.nav-logo {
 		flex: 1;
 	}
@@ -262,6 +277,7 @@ form .signup-link a:hover{
 
 	.nav-toggle {
 		order: 2;
+		margin-left: 100px;
 	}
 
 	.button.secondary {
@@ -320,7 +336,7 @@ form .signup-link a:hover{
 	}
 
 	.menu li.button {
-		padding-right: 0;
+		padding-right: 200px;
 	}
 }
 

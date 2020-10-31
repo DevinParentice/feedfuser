@@ -22,8 +22,9 @@
 				</li>
 				<li class="nav-item"><a href="#">About</a></li>
 				{% if 'logged_in' in session %}
-				<li class="nav-item button secondary"><a
-						href="{{ url_for('user.dashboard') }}"><span>{{ session['user'].username }}</span></a></li>
+				<li class="nav-item button secondary user-button"><a href="{{ url_for('user.dashboard') }}"><span><img
+								src="{{ image_file }}" alt="Navigation Picture" class="nav-pic">
+							{{ session['user'].username }}</span></a></li>
 				<li class="nav-toggle"><span class="bars"></span></li>
 				{% else %}
 				<li class="nav-item button"><span id="loginButton">Log In</span></li>
