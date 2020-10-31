@@ -12,7 +12,8 @@ body{
 
 .profile-container {
     padding: 20px;
-    display: flex;
+	display: flex;
+	flex-direction: column;
     justify-content: center;
     align-items: center;
 }

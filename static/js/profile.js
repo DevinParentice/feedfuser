@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+	setTimeout(function () {
+		$('.alert').fadeOut('slow');
+	}, 2000); // <-- time in milliseconds
+
 	$('#file-input').change(function () {
 		$("form[name=image-form]").trigger('submit');
 	});

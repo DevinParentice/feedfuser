@@ -1,9 +1,9 @@
 from PIL.Image import new
-from flask import render_template, Blueprint, session, redirect, url_for, request
+from flask import render_template, Blueprint, session, redirect, url_for, request, jsonify, flash
 from functools import wraps
+
 from user.utils import save_picture
 from user.models import User, db
-from bson.objectid import ObjectId
 
 user = Blueprint('user', __name__)
 
@@ -38,7 +38,8 @@ def dashboard():
             {'_id': session['user'].get('_id')},
             {'$set': {"profile_pic": newPic}}
         )
-        return redirect(url_for('user.dashboard'))
+        flash('Profile picture successfully updated', 'success')
+        return jsonify({"success": "Profile picture successfully updated"}), 200
     else:
         currentUser = db.users.find_one(
             {'username': session['user']['username']})
