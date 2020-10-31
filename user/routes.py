@@ -28,6 +28,11 @@ def signout():
     return User().signout()
 
 
+@user.route('/user/login', methods=['POST'])
+def login():
+    return User().login()
+
+
 @user.route('/dashboard/', methods=['GET', 'POST'])
 @login_required
 def dashboard():

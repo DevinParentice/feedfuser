@@ -20,6 +20,8 @@ class User:
         password_confirm = request.form.get('password-confirm')
 
         if password == password_confirm:
+            if len(password) < 4:
+                return jsonify({"error": "Password must be greater than four characters"}), 400
             user = {
                 "_id": uuid.uuid4().hex,
                 "username": request.form.get('username'),
@@ -31,7 +33,9 @@ class User:
             user['password'] = pbkdf2_sha256.encrypt(user['password'])
             request.close()
             if db.users.find_one({"email": user['email']}):
-                return jsonify({"error": "Email address already in use"}), 400
+                return jsonify({"error": "Email address is already in use, please sign in"}), 400
+            elif db.users.find_one({"username": user['username']}):
+                return jsonify({"error": "Username is already in use, please choose another"}), 400
 
             if db.users.insert_one(user):
                 return self.start_session(user)
@@ -44,3 +48,12 @@ class User:
     def signout(self):
         session.clear()
         return redirect('/')
+
+    def login(self):
+        user = db.users.find_one({
+            "email": request.form.get('email')
+        })
+
+        if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
+            return self.start_session(user)
+        return jsonify({"error": "Invalid login credentials"}), 401
