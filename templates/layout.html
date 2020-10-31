@@ -22,20 +22,28 @@
 				</li>
 				<li class="nav-item"><a href="#">About</a></li>
 				{% if 'logged_in' in session %}
-				<li class="nav-item button secondary user-button"><a href="{{ url_for('user.dashboard') }}"><span><img
-								src="{{ image_file }}" alt="Navigation Picture" class="nav-pic">
-							{{ session['user'].username }}</span></a></li>
+				<li class="nav-item button secondary user-button">
+					<a href="{{ url_for('user.dashboard') }}">
+						<span class="nav-span">
+							<img src="{{ image_file }}" alt="Navigation Picture" class="nav-pic">
+							<span class="user-text">{{ session['user'].username }} <i
+									class="fas fa-chevron-down"></i></span>
+						</span>
+					</a>
+				</li>
 				<li class="nav-toggle"><span class="bars"></span></li>
 				{% else %}
-				<li class="nav-item button"><span id="loginButton">Log In</span></li>
-				<li class="nav-item button secondary"><span id="signupButton">Sign Up</span></li>
+				<li class="nav-item button"><span class="nav-span" id="loginButton">Log In</span></li>
+				<li class="nav-item button secondary"><span class="nav-span" id="signupButton">Sign Up</span></li>
 				{% endif %}
 			</ul>
 		</nav>
 	</header>
 	<main>
+		{% if 'logged_in' not in session %}
 		{% include 'login.html' %}
 		{% include 'signup.html' %}
+		{% endif %}
 		{% block content %}{% endblock %}
 	</main>
 </body>

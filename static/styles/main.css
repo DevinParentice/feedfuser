@@ -24,17 +24,14 @@ span, .nav-item a, .nav-logo a {
 	text-decoration: none;
 }
 
-span:not(.hvr-underline-reveal):hover {
-	color: lightgrey;
-}
-
-.menu li {
+.menu li:not(.nav-toggle) {
 	font-size: 20px;
 	padding: 15px 5px;
 }
 
-.menu li span {
+.menu li .nav-span {
 	display: block;
+	margin-left: 35px;
 }
 
 .nav-logo a {
@@ -44,17 +41,19 @@ span:not(.hvr-underline-reveal):hover {
 }
 
 .nav-pic {
-	height: 30px;
-	width: 30px;
-	border-radius: 50%;
-	margin-right: 5px;
+	display: none;
+}
+
+.user-button .nav-span {
+	width: 200px;
+	font-size: 24px;
+	display: inline-block;
+	text-align: right;
 }
 
 .user-button span {
-	width: 200px;
-	font-size: 24px;
-	align-items: center;
-	text-align: center;
+	color: #1c1c1c;
+	font-family: 'Noto Sans', sans-serif;
 }
 
 .button.secondary {
@@ -93,26 +92,28 @@ span:not(.hvr-underline-reveal):hover {
 .bars {
 	background: #999;
 	display: inline-block;
-	height: 2px;
+	height: 4px;
 	position: relative;
-	width: 18px;
+	width: 24px;
+	border-radius: 10px;
 }
 
 .bars::before, .bars::after {
 	background: #999;
 	content:"";
 	display: inline-block;
-	height: 2px;
+	height: 4px;
 	position: absolute;
-	width: 18px;
+	width: 24px;
+	border-radius: 10px;
 }
 
 .bars::before {
-	top: 5px;
+	top: 10px;
 }
 
 .bars::after {
-	top: -5px;
+	top: -10px;
 }
 
 .container{
@@ -280,16 +281,21 @@ form .signup-link a:hover{
 		margin-left: 100px;
 	}
 
+	.user-button span {
+		color: #fff;
+		font-family: 'Noto Sans', sans-serif;
+	}
+
 	.button.secondary {
 		border: 0;
 	}
 
-	.button:not(.secondary) span {
+	.button:not(.secondary) .nav-span {
 		background: none;
 		color: #1c1c1c;
 	}
 
-	.button span {
+	.button .nav-span {
 		text-decoration: none;
 		color: white;
 		padding: 7px 15px;
@@ -299,15 +305,28 @@ form .signup-link a:hover{
 		cursor: pointer;
 	}
 
-	.button:not(.secondary) span:hover {
+	.button.secondary a .nav-span {
+		padding: 5px 15px;
+	}
+
+	.button:not(.secondary) .nav-span:hover {
 		transition: all .1s;
 		border: 2px solid #0079D3;
 	}
+	
+	.nav-pic {
+		height: 30px;
+		width: 30px;
+		border-radius: 50%;
+		margin-right: 10px;
+		position: absolute;
+		right: 240px;
+		display: inline;
+	}
 
-	.button.secondary span:hover {
-		transition: all .25s;
-		background: #7fbce9;
-		border-color: #7fbce9;
+	.menu li .nav-span {
+		display: block;
+		margin-left: 0;
 	}
 }
 
@@ -337,6 +356,26 @@ form .signup-link a:hover{
 
 	.menu li.button {
 		padding-right: 200px;
+	}
+
+	.nav-pic {
+		height: 30px;
+		width: 30px;
+		border-radius: 50%;
+		margin-right: 10px;
+		position: absolute;
+		right: 160px;
+		display: inline;
+	}
+
+	.user-button span {
+		color: #fff;
+		font-family: 'Noto Sans', sans-serif;
+	}
+
+	.menu li .nav-span {
+		display: block;
+		margin-left: 0;
 	}
 }
 
