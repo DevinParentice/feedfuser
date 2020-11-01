@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/forms.css') }}">
 	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	{% block head %}{% endblock %}
@@ -17,24 +18,33 @@
 <body>
 	<header>
 		<nav>
-			<ul class="menu">
-				<li class="nav-logo"><a href="{{ url_for('main.home') }}" class="hvr-underline-reveal">FeedFuser</a>
-				</li>
-				<li class="nav-item"><a href="#">About</a></li>
+			<div class="logo">
+				<a href="{{ url_for('main.home') }}">
+					<h1 class="hvr-underline-reveal">FeedFuser</h1>
+				</a>
+			</div>
+			<label for="btn" class="icon">
+				<span class="fa fa-bars"></span>
+			</label>
+			<input type="checkbox" id="btn">
+			<ul>
+				<li><a href="#">About</a></li>
 				{% if 'logged_in' in session %}
-				<li class="nav-item button secondary user-button">
-					<a href="{{ url_for('user.dashboard') }}">
-						<span class="nav-span">
-							<img src="{{ image_file }}" alt="Navigation Picture" class="nav-pic">
-							<span class="user-text">{{ session['user'].username }} <i
-									class="fas fa-chevron-down"></i></span>
-						</span>
-					</a>
+				<li>
+					<label for="btn-1" class="show">{{ session['user'].username }} <i
+							class="fas fa-chevron-down"></i></label>
+					<a href="#" class="user-button">{{ session['user'].username }} <i
+							class="fas fa-chevron-down"></i></a>
+					<input type="checkbox" id="btn-1" class="mobile-checkbox">
+					<ul>
+						<li><a href="{{ url_for('user.dashboard') }}">Dashboard</a></li>
+						<li><a href="#">Dark Mode</a></li>
+						<li><a href="{{ url_for('user.signout') }}">Sign Out</a></li>
+					</ul>
 				</li>
-				<li class="nav-toggle"><span class="bars"></span></li>
 				{% else %}
-				<li class="nav-item button"><span class="nav-span" id="loginButton">Log In</span></li>
-				<li class="nav-item button secondary"><span class="nav-span" id="signupButton">Sign Up</span></li>
+				<li><span id="loginButton">Log In</span></li>
+				<li><span id="signupButton">Sign Up</span></li>
 				{% endif %}
 			</ul>
 		</nav>
@@ -43,6 +53,11 @@
 		{% if 'logged_in' not in session %}
 		{% include 'login.html' %}
 		{% include 'signup.html' %}
+		<script>
+			$('.icon').click(function () {
+				$('span').toggleClass("cancel");
+			});
+		</script>
 		{% endif %}
 		{% block content %}{% endblock %}
 	</main>

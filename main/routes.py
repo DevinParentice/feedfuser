@@ -18,7 +18,7 @@ def login_required(f):
 @main.route('/')
 @main.route('/home/')
 def home():
-    if session['logged_in'] == True:
+    if 'logged_in' in session:
         currentUser = db.users.find_one(
             {'email': session['user']['email']})
         image_file = url_for('static', filename='images/' +
