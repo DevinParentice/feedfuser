@@ -51,3 +51,9 @@ def dashboard():
         image_file = url_for('static', filename='images/' +
                              currentUser['profile_pic'])
         return render_template('dashboard.html', image_file=image_file)
+
+
+@user.route('/twitter')
+@login_required
+def twitter():
+    return render_template('twitter.html')

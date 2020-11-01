@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/forms.css') }}">
 	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	{% block head %}{% endblock %}
@@ -19,14 +18,20 @@
 	<header>
 		<nav>
 			<div class="logo">
-				<a href="{{ url_for('main.home') }}">
+				{% if 'logged_in' in session %}
+				<a href="{{ url_for('main.feed') }}">
 					<h1 class="hvr-underline-reveal">FeedFuser</h1>
 				</a>
+				{% else %}
+				<a href="{{ url_for('main.feed') }}">
+					<h1 class="hvr-underline-reveal">FeedFuser</h1>
+				</a>
+				{% endif %}
 			</div>
 			<label for="btn" class="icon">
 				<span class="fa fa-bars"></span>
 			</label>
-			<input type="checkbox" id="btn">
+			<input type="checkbox" id="btn" class="mobile-checkbox">
 			<ul>
 				<li><a href="#">About</a></li>
 				{% if 'logged_in' in session %}

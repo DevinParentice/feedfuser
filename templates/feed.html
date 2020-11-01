@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
 <h1 style="text-align: center;">Feed</h1>
-
+{% for post in feed %}
+<blockquote class="twitter-tweet"><a href="{{post}}"></a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% endfor %}
 {% endblock content %}

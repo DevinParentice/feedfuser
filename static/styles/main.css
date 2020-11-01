@@ -188,10 +188,10 @@ nav ul ul ul li {
 	left: 150px;
 }
 
-.show,.icon,.mobile-checkbox {
+.show, .icon, .mobile-checkbox {
 	display: none;
 }
-  
+
 .fa-plus {
 	font-size: 15px;
 	margin-left: 40px;
@@ -204,6 +204,10 @@ nav ul ul ul li {
 }
 
 @media all and (max-width: 968px) {
+
+	.mobile-checkbox {
+		display: none;
+	}
 	
 	nav ul {
 	  margin-right: 0px;

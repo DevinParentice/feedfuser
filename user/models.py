@@ -28,6 +28,10 @@ class User:
                 "email": request.form.get('email'),
                 "password": password,
                 "profile_pic": 'profile.png',
+                "twitter-consumer_key": "UvIXepn05rKQoEzLICcMMIAyc",
+                "twitter-consumer_secret": "V7rQqKqDxmG1qUJ4u8ueOmOSjxSIJ7U62ZmABSTHqt8Ti66OHZ",
+                "twitter-access_token_key": "3601558037-dTlQMkcXkEFkTknftc1zKDzz9Rd3PO0HxIwVpCj",
+                "twitter-access_token_secret": "MxsHWz0XwHIrv2KJgAWVkxMrCXv0Miu7XXCKPYSGUM4QK"
             }
 
             user['password'] = pbkdf2_sha256.encrypt(user['password'])

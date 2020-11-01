@@ -1,3 +1,4 @@
+import twitter
 from flask import render_template, Blueprint, session, redirect, url_for
 from functools import wraps
 from user.models import db
@@ -30,4 +31,13 @@ def home():
 @main.route("/feed/")
 @login_required
 def feed():
-    return render_template('feed.html')
+    currentUser = db.users.find_one(
+        {'email': session['user']['email']})
+    api = twitter.Api(consumer_key=currentUser['twitter-consumer_key'],
+                      consumer_secret=currentUser['twitter-consumer_secret'],
+                      access_token_key=currentUser['twitter-access_token_key'],
+                      access_token_secret=currentUser['twitter-access_token_secret'])
+    statuses = api.GetHomeTimeline()
+    tweets = [
+        f'https://twitter.com/placeholder/status/{s.id_str}' for s in statuses]
+    return render_template('feed.html', feed=tweets)
