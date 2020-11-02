@@ -1,7 +1,11 @@
 import twitter
+import pytz
+from datetime import date, datetime
+from instagram_private_api import Client, ClientCompatPatch
 from flask import render_template, Blueprint, session, redirect, url_for
 from functools import wraps
 from user.models import db
+from main.utils import login_twitter, ig_login
 
 main = Blueprint('main', __name__)
 
@@ -33,11 +37,8 @@ def home():
 def feed():
     currentUser = db.users.find_one(
         {'email': session['user']['email']})
-    api = twitter.Api(consumer_key=currentUser['twitter-consumer_key'],
-                      consumer_secret=currentUser['twitter-consumer_secret'],
-                      access_token_key=currentUser['twitter-access_token_key'],
-                      access_token_secret=currentUser['twitter-access_token_secret'])
-    statuses = api.GetHomeTimeline()
-    tweets = [
-        f'https://twitter.com/placeholder/status/{s.id_str}' for s in statuses]
-    return render_template('feed.html', feed=tweets)
+    tweets = login_twitter(currentUser)
+    ig_pics = ig_login(currentUser)
+    total_feed = tweets + ig_pics
+    total_feed.sort(key=lambda x: x['Date'], reverse=True)
+    return render_template('feed.html', feed=total_feed)

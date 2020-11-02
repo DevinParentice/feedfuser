@@ -2,7 +2,17 @@
 {% block content %}
 <h1 style="text-align: center;">Feed</h1>
 {% for post in feed %}
-<blockquote class="twitter-tweet"><a href="{{post}}"></a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<center>
+	{% if post.Platform == 'Twitter' %}
+	<blockquote class="twitter-tweet"><a href="{{ post.Link }}"></a></blockquote>
+	{% elif post.Platform == 'Instagram' %}
+	<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="{{ post.Link }}"
+		data-instgrm-version="13"
+		style=" background:#FFF; border:0; border-radius:10px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+	</blockquote>
+	{% endif %}
+</center>
 {% endfor %}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="//www.instagram.com/embed.js"></script>
 {% endblock content %}
