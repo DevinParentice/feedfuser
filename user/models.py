@@ -1,10 +1,14 @@
 from flask import Flask, jsonify, request, session, redirect
 from passlib.hash import pbkdf2_sha256
+from dotenv import load_dotenv
 import pymongo
 import uuid
+import os
 
 client = pymongo.MongoClient('localhost', 27017)
 db = client.user_login_system
+
+load_dotenv()
 
 
 class User:
@@ -28,12 +32,12 @@ class User:
                 "email": request.form.get('email'),
                 "password": password,
                 "profile_pic": 'profile.png',
-                "twitter-consumer_key": "",
-                "twitter-consumer_secret": "",
-                "twitter-access_token_key": "",
-                "twitter-access_token_secret": "",
-                "ig-username": "",
-                "ig-password": ""
+                "twitter-consumer_key": os.getenv('twitter-consumer_key'),
+                "twitter-consumer_secret": os.getenv('twitter-consumer_secret'),
+                "twitter-access_token_key": os.getenv('twitter-access_token_key'),
+                "twitter-access_token_secret": os.getenv('twitter-access_token_secret'),
+                "ig-username": os.getenv('ig-username'),
+                "ig-password": os.getenv('ig-password')
             }
 
             user['password'] = pbkdf2_sha256.encrypt(user['password'])
